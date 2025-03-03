@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventaris Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+            width: 50%;
+            padding: 10px;
+            background: white;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 90%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        table {
+            width: 60%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Inventaris Barang</h2>
+
+    <form id="inventoryForm">
+        <label for="namaBarang">Nama Barang:</label>
+        <input type="text" id="namaBarang" required>
+
+        <label for="jumlah">Jumlah:</label>
+        <input type="number" id="jumlah" required>
+
+        <label for="kategori">Kategori:</label>
+        <select id="kategori">
+            <option value="Elektronik">Elektronik</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Alat Tulis">Alat Tulis</option>
+            <option value="Peralatan">Peralatan</option>
+            <option value="Pakaian">Pakaian</option>
+        </select>
+
+        <button type="button" onclick="tambahBarang()">Tambah Barang</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Barang</th>
+                <th>Jumlah</th>
+                <th>Kategori</th>
+            </tr>
+        </thead>
+        <tbody id="tabelBarang">
+            <tr><td>Komputer</td><td>10</td><td>Elektronik</td></tr>
+            <tr><td>Kursi</td><td>5</td><td>Furniture</td></tr>
+            <tr><td>Kalkulator</td><td>8</td><td>Elektronik</td></tr>
+            <tr><td>Pena</td><td>17</td><td>Alat Tulis</td></tr>
+            <tr><td>Sepatu</td><td>3</td><td>Pakaian</td></tr>
+            <tr><td>Monitor</td><td>15</td><td>Elektronik</td></tr>
+            <tr><td>Pensil</td><td>7</td><td>Alat Tulis</td></tr>
+            <tr><td>Peti</td><td>9</td><td>Peralatan</td></tr>
+            <tr><td>Meja</td><td>20</td><td>Furniture</td></tr>
+            <tr><td>Komputer</td><td>6</td><td>Elektronik</td></tr>
+        </tbody>
+    </table>
+
+    <script>
+        function tambahBarang() {
+            var namaBarang = document.getElementById("namaBarang").value;
+            var jumlah = document.getElementById("jumlah").value;
+            var kategori = document.getElementById("kategori").value;
+
+            if (namaBarang === "" || jumlah === "") {
+                alert("Mohon isi semua data!");
+                return;
+            }
+
+            var tabel = document.getElementById("tabelBarang");
+            var row = tabel.insertRow();
+            row.insertCell(0).innerText = namaBarang;
+            row.insertCell(1).innerText = jumlah;
+            row.insertCell(2).innerText = kategori;
+
+            document.getElementById("inventoryForm").reset();
+        }
+    </script>
+</body>
+</html>
